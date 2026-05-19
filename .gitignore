@@ -3,6 +3,6 @@ __pycache__/
 *.pyc
 .env
 instance/
-migrations/
-.pytest_cache/
+.flaskenv
 .DS_Store
+.vscode/

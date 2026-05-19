@@ -1,0 +1,106 @@
+.about-hero {
+    padding: 120px 0 90px;
+    background:
+        linear-gradient(rgba(33, 23, 19, 0.18), rgba(33, 23, 19, 0.32)),
+        url("../images/about-cafe.jpg");
+    color: #fff;
+}
+
+.about-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 56px;
+    align-items: end;
+}
+
+.about-hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 6.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+}
+
+.about-hero p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.12rem;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.values-grid article {
+    padding: 34px;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 16px 48px rgba(33, 23, 19, 0.07);
+}
+
+.values-grid span {
+    color: var(--color-accent);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.values-grid h2 {
+    margin-top: 28px;
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--color-primary-dark);
+}
+
+.values-grid p {
+    margin-top: 12px;
+    color: var(--color-muted);
+}
+
+.philosophy-section {
+    padding-top: 32px;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.philosophy-image {
+    min-height: 520px;
+    border-radius: 42px;
+    background:
+        linear-gradient(rgba(33, 23, 19, 0.18), rgba(33, 23, 19, 0.32)),
+        url("../images/about-cafe.jpg");
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow-soft);
+}
+
+.philosophy-grid h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--color-primary-dark);
+}
+
+.philosophy-grid p {
+    margin: 24px 0 32px;
+    color: var(--color-muted);
+    font-size: 1.08rem;
+}
+
+@media (max-width: 900px) {
+    .about-hero-grid,
+    .values-grid,
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .philosophy-image {
+        min-height: 380px;
+    }
+}

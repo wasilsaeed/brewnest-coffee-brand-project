@@ -1,7 +1,7 @@
-from flask import blueprints, render_template
+from flask import Blueprint, render_template
 from .data import coffee_menu, featured_products
 
-main = blueprints("main", __name__)
+main = Blueprint("main", __name__)
 
 @main.route("/")
 def home():
@@ -19,4 +19,3 @@ def about():
 def contact():
     return render_template("contact.html")
 
-    

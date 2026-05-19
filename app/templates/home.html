@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}BrewNest | Premium Coffee House{% endblock %}
+
+{% block meta_description %}
+Experience BrewNest, a premium coffee house serving handcrafted coffee, artisan bakery items, and elegant café moments.
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="home-hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <span class="eyebrow">Premium Coffee House</span>
+
+            <h1>Crafted coffee for refined everyday rituals.</h1>
+
+            <p>
+                BrewNest blends exceptional beans, thoughtful design, and warm hospitality into a luxury café experience made for slow mornings, focused afternoons, and memorable conversations.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{{ url_for('main.menu') }}" class="btn btn-primary">Explore Menu</a>
+                <a href="{{ url_for('main.about') }}" class="btn btn-outline">Our Story</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="hero-card-inner">
+                <span>Signature Roast</span>
+                <h2>Velvet Reserve</h2>
+                <p>Dark chocolate, roasted almond, soft caramel finish.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section featured-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">House Favorites</span>
+            <h2 class="section-title">Elegant flavors, expertly prepared.</h2>
+            <p class="section-text">
+                Discover a curated selection of our most loved premium drinks and café pairings.
+            </p>
+        </div>
+
+        <div class="featured-grid">
+            {% for product in featured_products %}
+            <article class="featured-card">
+                <span class="product-tag">{{ product.tag }}</span>
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <strong>{{ product.price }}</strong>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="experience-section">
+    <div class="container experience-grid">
+        <div>
+            <span class="eyebrow">The Experience</span>
+            <h2>A calm, premium escape in the heart of the city.</h2>
+        </div>
+
+        <p>
+            From our interior atmosphere to our carefully sourced beans, every BrewNest detail is designed to feel considered, elevated, and welcoming.
+        </p>
+    </div>
+</section>
+{% endblock %}

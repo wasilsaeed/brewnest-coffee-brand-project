@@ -1,104 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        {% block title %}BrewNest | Premium Coffee House{% endblock %}
+      {% block title %}BrewNest | Premium Coffee House{% endblock %}
     </title>
 
-    <meta 
-        name="description" 
-        content="{% block meta_description %}
+    <meta
+      name="description"
+      content="{% block meta_description %}
                 BrewNest is a premium coffee house offering handcrafted coffee, artisan bakery items, and a refined café experience.
                 {% endblock %}"
-    >
+    />
 
     <!-- Global stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
 
     <!-- Page-specific stylesheet -->
     {% block styles %}{% endblock %}
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="site-header">
-        <nav class="navbar container">
-            <a href="{{ url_for('main.home') }}" class="brand">
-                <span class="brand-mark">B</span>
-                <span class="brand-text">BrewNest</span>
+      <nav class="navbar container">
+        <a href="{{ url_for('main.home') }}" class="brand">
+          <span class="brand-mark">B</span>
+          <span class="brand-text">BrewNest</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li>
+            <a
+              href="{{ url_for('main.home') }}"
+              class="{% if active_page == 'home' %}active{% endif %}"
+            >
+              Home
             </a>
+          </li>
 
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <ul class="nav-links">
-                <li>
-                    <a href="{{ url_for('main.home') }}">Home</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('main.menu') }}">Menu</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('main.about') }}">About</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('main.contact') }}">Contact</a>
-                </li>
-            </ul>
-
-            <a href="{{ url_for('main.menu') }}" class="nav-cta">
-                Explore Menu
+          <li>
+            <a
+              href="{{ url_for('main.menu') }}"
+              class="{% if active_page == 'menu' %}active{% endif %}"
+            >
+              Menu
             </a>
-        </nav>
+          </li>
+
+          <li>
+            <a
+              href="{{ url_for('main.about') }}"
+              class="{% if active_page == 'about' %}active{% endif %}"
+            >
+              About
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="{{ url_for('main.contact') }}"
+              class="{% if active_page == 'contact' %}active{% endif %}"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+
+        <a href="{{ url_for('main.menu') }}" class="nav-cta"> Explore Menu </a>
+      </nav>
     </header>
+     {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="flash-wrapper">
+        {% for category, message in messages %}
+        <div class="flash-message flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %} 
 
     <main>
-        {% block content %}{% endblock %}
+     {% block content %}{% endblock %}
     </main>
 
     <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <a href="{{ url_for('main.home') }}" class="footer-brand">
-                    BrewNest
-                </a>
-                <p>
-                    A refined coffee house experience crafted for those who appreciate flavor, atmosphere, and detail.
-                </p>
-            </div>
-
-            <div>
-                <h4>Explore</h4>
-                <a href="{{ url_for('main.home') }}">Home</a>
-                <a href="{{ url_for('main.menu') }}">Menu</a>
-                <a href="{{ url_for('main.about') }}">About</a>
-                <a href="{{ url_for('main.contact') }}">Contact</a>
-            </div>
-
-            <div>
-                <h4>Visit</h4>
-                <p>18 Roast Avenue</p>
-                <p>New York, NY</p>
-                <p>Open daily: 7:00 AM - 10:00 PM</p>
-            </div>
-
-            <div>
-                <h4>Contact</h4>
-                <p>hello@brewnest.com</p>
-                <p>+1 212 555 0188</p>
-            </div>
+      <div class="container footer-grid">
+        <div>
+          <a href="{{ url_for('main.home') }}" class="footer-brand">
+            BrewNest
+          </a>
+          <p>
+            A refined coffee house experience crafted for those who appreciate
+            flavor, atmosphere, and detail.
+          </p>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 BrewNest. All rights reserved.</p>
+        <div>
+          <h4>Explore</h4>
+          <a href="{{ url_for('main.home') }}">Home</a>
+          <a href="{{ url_for('main.menu') }}">Menu</a>
+          <a href="{{ url_for('main.about') }}">About</a>
+          <a href="{{ url_for('main.contact') }}">Contact</a>
         </div>
+
+        <div>
+          <h4>Visit</h4>
+          <p>18 Roast Avenue</p>
+          <p>New York, NY</p>
+          <p>Open daily: 7:00 AM - 10:00 PM</p>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p>hello@brewnest.com</p>
+          <p>+1 212 555 0188</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 BrewNest. All rights reserved.</p>
+      </div>
     </footer>
 
-    <!-- <script src="{{ url_for('static', filename='js/main.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}{% endblock %}
-</body>
+  </body>
 </html>

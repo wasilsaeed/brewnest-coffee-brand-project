@@ -1,65 +1,84 @@
-{% extends "base.html" %}
-
-{% block title %}Contact | BrewNest{% endblock %}
-
-{% block meta_description %}
-Contact BrewNest, visit our premium coffee house, or send us a message for reservations, events, and general inquiries.
-{% endblock %}
-
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
-{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Contact | BrewNest{% endblock %} {%
+block meta_description %} Contact BrewNest, visit our premium coffee house, or
+send us a message for reservations, events, and general inquiries. {% endblock
+%} {% block styles %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/contact.css') }}"
+/>
+{% endblock %} {% block content %}
 <section class="contact-hero">
-    <div class="container">
-        <span class="eyebrow">Contact</span>
-        <h1>Visit BrewNest or send us a message.</h1>
-        <p>
-            Whether you are stopping by for your morning coffee or planning a private café experience, our team would love to hear from you.
-        </p>
-    </div>
+  <div class="container">
+    <span class="eyebrow">Contact</span>
+    <h1>Visit BrewNest or send us a message.</h1>
+    <p>
+      Whether you are stopping by for your morning coffee or planning a private
+      café experience, our team would love to hear from you.
+    </p>
+  </div>
 </section>
 
 <section class="section contact-section">
-    <div class="container contact-grid">
-        <div class="contact-details">
-            <article>
-                <h2>Location</h2>
-                <p>18 Roast Avenue, New York, NY</p>
-            </article>
+  <div class="container contact-grid">
+    <div class="contact-details">
+      <article>
+        <h2>Location</h2>
+        <p>18 Roast Avenue, New York, NY</p>
+      </article>
 
-            <article>
-                <h2>Hours</h2>
-                <p>Monday - Friday: 7:00 AM - 10:00 PM</p>
-                <p>Saturday - Sunday: 8:00 AM - 11:00 PM</p>
-            </article>
+      <article>
+        <h2>Hours</h2>
+        <p>Monday - Friday: 7:00 AM - 10:00 PM</p>
+        <p>Saturday - Sunday: 8:00 AM - 11:00 PM</p>
+      </article>
 
-            <article>
-                <h2>Contact</h2>
-                <p>hello@brewnest.com</p>
-                <p>+1 212 555 0188</p>
-            </article>
-        </div>
-
-        <form class="contact-form">
-            <div class="form-row">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name">
-            </div>
-
-            <div class="form-row">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com">
-            </div>
-
-            <div class="form-row">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="6" placeholder="How can we help?"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
+      <article>
+        <h2>Contact</h2>
+        <p>hello@brewnest.com</p>
+        <p>+1 212 555 0188</p>
+      </article>
     </div>
+
+    <form
+      class="contact-form"
+      method="POST"
+      action="{{ url_for('main.contact') }}"
+    >
+      <div class="form-row">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your name"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          placeholder="How can we help?"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+  </div>
 </section>
 {% endblock %}
